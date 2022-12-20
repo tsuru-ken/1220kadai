@@ -1,5 +1,6 @@
 <h1>投稿一覧</h1>
 
+
 <p><%= notice %></p>
 
 <table>
@@ -8,18 +9,17 @@
     <th>内容</th>
     <th>投稿者</th>
   </tr>
+  <% @posts.each do |post| %>
+    <tr>
+      <td><%= image_tag post.image.to_s, size: '200x200'%></td>
+      <td><%= post.content %></td>
+      <td><%= post.user.name%></td>
 
-<% @posts.each do |post| %>
-  <tr>
-    <td><%= image_tag post.image.to_s, size: '200x200'%></td>
-    <td><%= post.content %></td>
-    <td><%= post.user.name%></td>
-
-    <td><%= link_to '詳細を確認する', post_path(post.id) %></td>
-    <td><%= link_to "編集する", edit_post_path(post.id),data: { confirm: '本当に編集していいですか？' } %></td>
-    <td><%= link_to '削除する', post_path(post.id), method: :delete,data: { confirm: '本当に削除していいですか？' } %></td>
-  </tr>
-<% end %>
+      <td><%= link_to '詳細を確認する', post_path(post.id) %></td>
+      <td><%= link_to "編集する", edit_post_path(post.id),data: { confirm: '本当に編集していいですか？' } %></td>
+      <td><%= link_to '削除する', post_path(post.id), method: :delete,data: { confirm: '本当に削除していいですか？' } %></td>
+    </tr>
+  <% end %>
 </table>
 <%= link_to 'ブログ一覧画面に戻る', posts_path %>
 <%= link_to '新しくブログを投稿する', new_post_path %>

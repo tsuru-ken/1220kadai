@@ -13,12 +13,14 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
-    @post.user_id = current_user.id
+    # @post = Post.new(post_params)
+    # @post.user_id = current_user.id
+    @post = current_user.posts.build(post_params)
     if params[:back]
       render :new
     else
       if @post.save
+      ContactMailer.contact_mail(@post).deliver
       redirect_to new_post_path, notice: "作成しました！"
       else
         render :new
@@ -27,6 +29,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    @favorite = current_user.favorites.find_by(post_id: @post.id)
   end
 
   def edit

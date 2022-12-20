@@ -1,0 +1,19 @@
+body {
+  text-align: center;
+}
+
+.table {
+  position: relative;
+}
+
+header {
+  height: 20px;
+  color: antiquewhite;
+  background-color: cadetblue;
+}
+
+footer {
+  height: 20px;
+  color: antiquewhite;
+  background-color: cadetblue;
+}

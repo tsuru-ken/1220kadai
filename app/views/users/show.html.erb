@@ -1,3 +1,16 @@
 <h1><%= @user.name %>のページ</h1>
 
 <p>メールアドレス: <%= @user.email %></p>
+<p>
+  <strong>Icon:</strong>
+  <%= if @user.image.present?
+        image_tag @user.image.url, size: "40x40"
+      else
+      image_tag "", size: "40x40"
+      end
+  %>
+</p>
+
+<%= link_to 'Post', posts_path %>
+<%= link_to 'Favorite', favorites_path %>
+<%= link_to 'Edit', edit_user_path(@user)  %>
