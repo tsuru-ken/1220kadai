@@ -22,7 +22,6 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     render :new if @user.invalid?
     @user.user_id = current_user.id
-  
   end
 
   def edit
